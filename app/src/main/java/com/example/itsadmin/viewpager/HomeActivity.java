@@ -1,5 +1,7 @@
 package com.example.itsadmin.viewpager;
 
+import android.app.ActionBar;
+import android.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -12,13 +14,55 @@ import java.util.ArrayList;
 
 public class HomeActivity extends FragmentActivity {
 
-    ViewPager viewPager;
-    @Override
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        PagerAdapter pa = new PagerAdapter(getSupportFragmentManager());
+       final ViewPager viewPager;
         viewPager = (ViewPager) findViewById(R.id.pager);
+        /**
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                getActionBar().setSelectedNavigationItem(position);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+         **/
+        PagerAdapter pa = new PagerAdapter(getSupportFragmentManager());
+        //ActionBar actionBar = getActionBar();
+//        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        /**
+        ActionBar.TabListener tabListener = new ActionBar.TabListener() {
+            @Override
+            public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+            }
+
+            @Override
+            public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+            }
+        };
+        for(int i = 0; i < 2; i++){
+            actionBar.addTab(actionBar.newTab().setText("Tab + "+(i+1)).setTabListener(tabListener));
+        }
+         **/
         viewPager.setAdapter(pa);
 
 
