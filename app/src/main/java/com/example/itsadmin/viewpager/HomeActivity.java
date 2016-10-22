@@ -20,10 +20,10 @@ public class HomeActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
        final ViewPager viewPager;
+        final ActionBar actionBar = getActionBar();
         viewPager = (ViewPager) findViewById(R.id.pager);
         PagerAdapter pa = new PagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pa);
-
 
 
 
@@ -31,6 +31,7 @@ public class HomeActivity extends FragmentActivity {
 
     public class PagerAdapter extends FragmentStatePagerAdapter{
 
+        private String[] titles = {"Title 1", "Title 2"};
         public PagerAdapter(FragmentManager fm){
             super(fm);
         }
@@ -51,6 +52,11 @@ public class HomeActivity extends FragmentActivity {
         @Override
         public int getCount() {
             return 2;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return titles[position];
         }
     }
 }
